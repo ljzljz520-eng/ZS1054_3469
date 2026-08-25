@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "metrics": {
+    "production_loc": 2317,
+    "production_files": 25,
+    "production_packages": 8,
+    "test_files": 9,
+    "production_functions": 150,
+    "decision_points": 348
+  },
+  "persistence": {
+    "module": "go.etcd.io/bbolt",
+    "entities": [
+      "Record",
+      "AuditEvent",
+      "Workflow",
+      "Attachment"
+    ],
+    "reopen_test": "TestPersistenceSurvivesReopen"
+  },
+  "workflows": [
+    {
+      "steps": [
+        "create",
+        "review",
+        "confirm",
+        "archive"
+      ],
+      "test": "TestWorkflowCreateReviewArchive"
+    },
+    {
+      "steps": [
+        "search",
+        "select",
+        "update",
+        "publish"
+      ],
+      "test": "TestWorkflowSearchUpdatePublish"
+    },
+    {
+      "steps": [
+        "import",
+        "validate",
+        "persist",
+        "report"
+      ],
+      "test": "TestWorkflowImportReport"
+    }
+  ]
+}
